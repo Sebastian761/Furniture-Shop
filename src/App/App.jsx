@@ -1,7 +1,7 @@
 import { BrowserRouter } from 'react-router-dom'
 import { Navbar } from '../Components/Navbar/components/Navbar'
 import { Rutas } from '../routes'
-import { MainContainer } from '../Components/Main'
+import { Main } from '../Components/Main/components'
 import './App.css'
 
 
@@ -13,7 +13,7 @@ export const App = ()  => {
     <BrowserRouter>
       <Navbar menu={ menu }  />
       <Rutas />
-      {/* <MainContainer /> */}
+      <Main />
     </BrowserRouter>
   )
 }

@@ -1,0 +1,134 @@
+@import url('/src/App/App.css');
+
+.mainUp__container {
+    display: flex;
+    height: 750px;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+    width: 100%;
+}
+
+.mainUp__container--info{
+    display: flex;
+    height: 700px;
+    align-items: center;
+    gap: 60px;
+    width: 90%;
+}
+
+.new__text {
+    position: absolute;
+    width: 150px;
+    top: 20%;
+    border-bottom: 1px solid var(--commonGray);
+    padding-bottom: 5px;
+    text-align: center;
+    font-weight: 200;
+    letter-spacing: 3px;
+    color: var(--textGray);
+}
+
+.mainUp__image {
+    background-image:  url("/src/assets/couch-removebg.png");
+    width: 100%;
+    height: 60%;
+    min-width: 430px;
+    background-size: cover;
+    background-position: left;
+    filter: drop-shadow(18px 20px 21px rgba(0, 0, 0, 0.3));
+}
+
+.sectionUp__text > h1{
+    font-size: 3rem;
+    line-height: 1.5em;
+}
+
+.sectionText__price {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    font-weight: 700;
+    margin-top: 30px;
+    font-size: 1.5em;
+}
+
+.sectionText__price > h5{
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+
+.sectionUp__text > p {
+    font-size: 1.2em;
+    padding-bottom: 10px;
+}
+
+.sectionUp__text > sub {
+    font-size: .9em;
+    font-weight: 600;
+}
+
+.sectionText__buttonGroup {
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+}
+
+.sectionText__buttonGroup > .buttonGroup__discover{
+    background-color:#FFF;
+    padding: 20px;
+    transition: all .2s ease-in;
+}
+
+.buttonGroup__discover:hover {
+    box-shadow: -15px 23px 21px -12px rgba(0,0,0,0.1);
+    background-color: #acacac33;
+}
+
+.buttonGroup__add:hover {
+    box-shadow: 24px 33px 21px -12px rgba(0,0,0,0.1);
+    background-color: #2d2d2dc9 !important;
+}
+
+
+.sectionText__buttonGroup > .buttonGroup__add {
+background-color: var(--textGray);
+color: #FFF;
+padding: 20px;
+font-weight: 600;
+font-size: .75em;
+transition: all .2s ease-in;
+}
+
+.mainUp__section {
+    text-align: center;
+    height: 220px;
+}
+
+@media screen and (max-width:960px) {
+    .mainUp__container--info {
+        flex-flow: column nowrap;
+        min-width: 380px;
+    }
+    .mainUp__container {
+        margin-top:80px;
+    }
+    .new__text {
+        top: 13%;
+    }
+}
+
+@media screen and (min-width:1050px) {
+    .mainUp__image {
+        width: 850px;
+    }
+    .mainUp__container--info {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width:450px ){
+    .mainUp__image {
+        display: none;
+    }
+}

@@ -3,6 +3,6 @@ import React from 'react'
 export const MainImage = () => {
 
     return (
-        <div className='main__image'></div>
+        <div className='mainUp__image'></div>
     )
 }
