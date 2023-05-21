@@ -10,13 +10,11 @@ export const NavbarAccount = () => {
         gap: '5px'
     }
 
-    console.log('sirve')
-
     return (
         <div>
             <div  style = { style }>
                 <PersonOutlineOutlinedIcon/>
-                <Link to={'/myAccount'} className="navbar-link">My account</Link>
+                <Link to={'/myAccount'} className="account-link">My account</Link>
             </div>
         </div>
     )

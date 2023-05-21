@@ -13,7 +13,7 @@ export const App = ()  => {
     <BrowserRouter>
       <Navbar menu={ menu }  />
       <Rutas />
-      <MainContainer />
+      {/* <MainContainer /> */}
     </BrowserRouter>
   )
 }

@@ -5,7 +5,7 @@ export const NavbarSearch = () => {
     const style = {
         display: 'flex',
         alignItems: 'center',
-        gap: '5px'
+        gap: '5px',
     }
 
     return (

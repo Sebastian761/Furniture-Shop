@@ -1,17 +1,17 @@
-import { NavbarItems, NavbarLogo, NavbarSearch } from "./"
-import { NavbarLayout } from "../layouts"
-import { NavbarCart } from "./cart/NavbarCart"
-import { NavbarAccount } from "./login/NavbarAccount"
+import { NavbarGroup, NavbarLogo} from "./"
+import { NavbarContainer } from "../layouts/NavbarContainer"
+import '../styles/NavbarLayout.css'
+import { NavbarMenu } from "./NavbarMenu";
 
-export const Navbar = (props, props1) => {
+export const Navbar = (props) => {
+
+    
 
     return (
-        <NavbarLayout>
+        <NavbarContainer>
             <NavbarLogo />
-            <NavbarItems { ...props }/>
-            <NavbarSearch />
-            <NavbarAccount { ...props1 } />
-            <NavbarCart />
-        </NavbarLayout>
+            <NavbarMenu />
+            <NavbarGroup />
+        </NavbarContainer>
     )
 }

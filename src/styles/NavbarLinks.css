@@ -1,7 +1,0 @@
-@import url('../App/App.css');
-
-.navbar-link {
-    text-decoration: none;
-    font-weight: 500;
-    color: var(--commonGrey)
-}
