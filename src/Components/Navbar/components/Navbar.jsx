@@ -5,7 +5,6 @@ import { NavbarMenu } from "./NavbarMenu";
 
 export const Navbar = (props) => {
 
-    
 
     return (
         <NavbarContainer>
