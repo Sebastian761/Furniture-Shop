@@ -1,5 +1,5 @@
 export * from './About'
-export * from './Collection'
+export * from './Collection/Collection'
 export * from './Contact'
 export * from './Categories'
 export * from './MyAccount'
