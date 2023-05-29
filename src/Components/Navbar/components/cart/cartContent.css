@@ -1,0 +1,38 @@
+.product__content {
+    width: 90%;
+    display: flex;
+    flex-flow: row nowrap;
+    background-color: rebeccapurple;
+    gap: 40px;
+}
+
+.product__image {
+    width: 200px;
+    object-fit: contain;
+    background-color: brown;
+}
+
+.produtc__title, .product__price, .product__image {
+    width: 25%;
+    height: 200px;
+}
+
+.produtc__title {
+    background-color: aqua;
+}
+
+.product__price {
+    background-color: beige;
+}
+
+
+.background {
+    border-radius: 18px;
+    width: 70%;
+    margin: 50px auto;
+    background-color: rgba(0,0,0,15%);
+}
+
+.title {
+    margin-bottom: 20px;
+}
