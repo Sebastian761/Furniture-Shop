@@ -4,12 +4,7 @@ import '../../Global/components/Collection/styles/card.css'
 import '../../Global/components/Collection/styles/collection.css'
 
 export const Products = () => {
-  const { data, cart, setCart } = useContext(dataContext)
-
-  const buyProducts = (product) => {
-    setCart([...cart, product])
-    console.log({cart})
-  }
+  const { data, buyProducts } = useContext(dataContext)
 
   return data.map((product) => {
     return (

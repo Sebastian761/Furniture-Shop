@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom"
 
 export const NavbarLogo = () => {
     return (
-        <div className="header__logo"></div>
+        <Link to={'/'} className="header__logo"></Link>
     )
 }

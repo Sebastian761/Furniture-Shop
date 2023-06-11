@@ -9,7 +9,7 @@
 }
 
 body {
-  background: linear-gradient(to right, #eaebef 30%, #d2e5f3  70%);
+  background: linear-gradient(to top, #eaebef 40%, #d2e5f3  60%);
   margin: 0;
   padding: 0;
   box-sizing: border-box;

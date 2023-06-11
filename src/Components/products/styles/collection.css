@@ -1,0 +1,20 @@
+.collection__container {
+    height: 90%;
+    width: 95vw;
+    margin: 20px auto;
+    padding: 40px;
+    font-family: 'Nunito', sans-serif;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 20px;
+    background-color:rgba(0,0,0,20%);
+    border-radius: 7.5px;
+}
+
+.cards__container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    min-width: 320px;
+}

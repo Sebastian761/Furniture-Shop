@@ -1,6 +1,6 @@
 import { MainImage } from "./MainImage"
 import { MainText } from "./MainText"
-import { MainUpLayout } from "../layouts/MainUpLayout"
+import { MainUpLayout } from "../../layouts/MainUpLayout"
 
 export const MainUp = () => {
     return (
