@@ -9,15 +9,15 @@ export const CartTotal = () => {
         <dl className="space-y-0.5 text-sm text-gray-700">
             <div className="flex justify-between">
                 <dt>Subtotal</dt>
-                <dd>{total}</dd>
+                <dd>$ {total}</dd>
             </div>
             <div className="flex justify-between">
                 <dt>IVA</dt>
-                <dd>{IVA}</dd>
+                <dd>$ {IVA}</dd>
             </div>
             <div className="flex justify-between !text-base font-medium">
                 <dt>Total</dt>
-                <dd>{total + IVA}</dd>
+                <dd>$ {total + IVA}</dd>
             </div>
         </dl>
     )
