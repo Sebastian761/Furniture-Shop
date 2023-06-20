@@ -18,7 +18,7 @@ export const MainCarousel = () => {
 				<ul className="grid grid-flow-row justify-center items-center text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 group relative w-[100%]">
 					<li  className=' sm:h-[420px] w-[320px] flex items-center mx-auto sm:my-8 hover:brightness-75  transition-all duration-1'>
 								<div className=' relative flex'>
-									<img src="/src/assets/down-table.jpg" alt="product__image" className='hover:shadow-2xl'/>
+									<img alt="product__image" src="/src/assets/down-table.jpg" className='hover:shadow-2xl  back'/>
 									<div className="h-[55%] absolute inset-y-[45%] w-[100%] flex flex-col items-start justify-center px-6">
 										<h3 className="text-xl font-medium text-slate-900">Skinny Jeans Blue</h3>
 										<p className="mt-1.5 max-w-[40ch] text-xs text-slate-900">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos sequi dicta impedit aperiam ipsum!</p>

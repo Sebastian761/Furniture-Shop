@@ -27,29 +27,3 @@ export const Products = () => {
   )
 
 }
-
-{/* <div className="cards__container">
-    { data.map(item =>
-      <div className='card__container'>
-        <img className='card__img' src={ item.image[0] }></img>
-        <div className='card__info'>
-          <h3 className='card__info-title'>{item.title}</h3>
-          <div className='card__info-text'>
-            <h4>Product info</h4>
-            <p>{item.info}</p>
-          </div>
-          <div className='card__prices'>
-              <p className='card__price'> $ {item.price}</p>
-              <button  className='card__btn'>Add to cart</button>
-          </div>
-        </div>
-      </div>) }
-  </div> */}
-
-
-// <Card
-// key={ item.id }
-// image={item.images[0] }
-// title={item.title}
-// price={item.price}
-// info={item.description} />

@@ -106,6 +106,10 @@ transition: all .2s ease-in;
     height: 220px;
 }
 
+.back {
+    background-image: url("/src/assets/down-table.jpg");
+}
+
 /* .back {
     background: rgb(53,140,255);
     background: linear-gradient(0deg, rgba(53,140,255,1) 0%, rgb(228, 234, 240) 100%);
