@@ -6,7 +6,7 @@ export const NavbarAccount = () => {
         <div>
             <div  className='header__account'>
                 <PersonOutlineOutlinedIcon/>
-                <Link to={'/myAccount'} className="account-link">My account</Link>
+                <Link to={'/login'} className="account-link">Login</Link>
             </div>
         </div>
     )

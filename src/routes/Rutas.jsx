@@ -5,6 +5,8 @@ import { Main } from "../Components/Main/components"
 import { CartContent } from "../Components/Navbar/components/cart/CartContent"
 import { ProductsLayout } from "../Components/products/ProductsLayout"
 import { Register } from "../Global/components/User/register"
+import { Home } from "../Components/Home"
+import { ProtectedRoute } from "../Global/components/User/ProtectedRoute"
 
 export const Rutas = () => {
 
@@ -21,6 +23,13 @@ export const Rutas = () => {
             <Route path="/myAccount" element={ <MyAccount/> } />
             <Route path="/cart" element={ <CartContent /> } />
             <Route path="/register" element={ <Register/> } />
+            
+                <Route path="/home" element={
+                    <ProtectedRoute>
+                        <Home/>
+                    </ProtectedRoute> 
+                } />
+        
             <Route path='*' element={ <Navigate to='/' /> } />
         </Routes>
     )

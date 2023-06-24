@@ -12,27 +12,27 @@ export const Register = () => {
 
     const { signup } = useAuth()
     const navigate = useNavigate()
+    const [errorcito, setErrorcito] = useState()
 
     const handleChange = ({target: {name, value}})=> {
         setUser({...user, [name]: value})
     }
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
+        setErrorcito(' ')
         try {
             await signup(user.email, user.password)
-            toast.success('Account successfully created') 
             navigate("/")
+            toast.success("Successfully register")
         } catch (error) {
-            if (error.code === "auth/invalid-email" ) {
-                toast.error("Invalid email")
-            } else if (error.code === "auth/weak-password") {
-                toast.error("Weak password, must be at least 6 characters")
-            } else if (error.code === "auth/email-already-in-use") {
-                toast.error("Email already in use")
+            if (error.code=== "auth/email-already-in-use" ) {
+                toast.error('Email already in use')
+            } else if (error.code=== "auth/weak-password") {
+                toast.error("Password too weak")
             }
         }
-    }
+    };
 
     return (
         <div className="mx-auto max-w-screen-xl my-24 px-4 py-16 sm:px-6 lg:px-8 bg-slate-100 shadow-xl">

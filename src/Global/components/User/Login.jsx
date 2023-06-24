@@ -1,25 +1,39 @@
-import React from 'react'
-import { GoogleAuthProvider, signInWithPopup, signInWithRedirect } from 'firebase/auth'
-import {  firebaseAuth } from '../../Firebase/config/firebase'
 import GoogleButton from 'react-google-button'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { useAuth } from '../../../Components/Context/AuthContext'
+import { toast, Toaster } from 'sonner'
 
 export const Login = () => {
 
-    async function handleOnclick() {
-        const googleProvider = new GoogleAuthProvider()
-        await signInWithGoogle(googleProvider)
-        console.log("tuki")
+    const [user, setUser] = useState({
+        email: '',
+        password: '',
+    })
+
+    const { login } = useAuth()
+    const navigate = useNavigate()
+    const [errorcito, setErrorcito] = useState()
+
+    const handleChange = ({ target: { name, value} })=> {
+        setUser({...user, [name]: value})
     }
 
-    async function signInWithGoogle(googleProvider) {
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        setErrorcito(' ')
         try {
-            const res = await signInWithPopup(firebaseAuth, googleProvider)
-            console.log(res)
-        } catch (e) {
-            console.error(e)
+            await login(user.email, user.password)
+            navigate("/home")
+            toast.success("Successfully login")
+        }   catch (error) {
+            if (error.code === "auth/wrong-password" ) {
+                    toast.error('Wrong password')
+                } else if (error.code === "auth/user-not-found") {
+                    toast.error("User not found")
+                }
+            }
         }
-    }
 
     return (
         <section className="relative flex flex-wrap lg:h-screen lg:items-center bg-slate-100">
@@ -28,27 +42,41 @@ export const Login = () => {
                     <h1 className="text-2xl font-bold sm:text-3xl">Get started today!</h1>
                     <p className="mt-4 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et libero nulla eaque error neque ipsa culpa autem, at itaque nostrum!</p>
                 </div>
-                <form action="" className="mx-auto mb-0 mt-8 max-w-md space-y-4">
+                <form 
+                    onSubmit={handleSubmit}
+                    className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-2xl sm:p-6 lg:p-8 bg-white">
+                    <p className="text-center text-lg font-medium">Sign up to your account</p>
                     <div>
-                        <label className="sr-only">Email</label>
+                        <label htmlFor="email" className="sr-only">Email</label>
                         <div className="relative">
-                            <input type="email" className="w-full rounded-lg border-gray-400 p-4 pe-12 text-sm shadow-sm" placeholder="Enter email"/>
+                            <input 
+                                type="email" 
+                                name='email' 
+                                onChange={handleChange} 
+                                className="w-full rounded-lg border-gray-4200 p-4 pe-12 text-sm shadow-sm" 
+                                placeholder="Enter email"/>
                         </div>
                     </div>
                     <div>
-                        <label className="sr-only">Password</label>
+                        <label htmlFor="password" className="sr-only">Password</label>
                         <div className="relative">
-                            <input type="password" className="w-full rounded-lg border-gray-400 p-4 pe-12 text-sm shadow-sm" placeholder="Enter password"/>
+                            <input 
+                                type="password" 
+                                name='password' 
+                                onChange={handleChange} 
+                                className="w-full rounded-lg border-gray-400 p-4 pe-12 text-sm shadow-sm" 
+                                placeholder="Enter password"/>
                         </div>
                     </div>
-                    <div  onClick={handleOnclick }>
+                    <div className='flex justify-between items-center'>
                         <GoogleButton>Login with Google</GoogleButton>
+                        <div className="text-sm text-gray-500 "> <p className='inline px-2nnnnn'>No account?</p> 
+                            <Link to={'/register'} className="underline inline" href="">Sign up</Link>
+                        </div>
                     </div>
                     <div className="flex items-center justify-between">
-                        <p className="text-sm text-gray-500"> No account?
-                            <Link to={'/register'} className="underline" href="">Sign up</Link>
-                        </p>
-                        <button type="submit" className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white">Sign in</button>
+                        <Toaster position="bottom-right" richColors/>
+                        <button type="submit" className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white">Login</button>
                     </div>
                 </form>
             </div>
@@ -57,4 +85,5 @@ export const Login = () => {
             </div>
         </section>
     )
-}
+
+    }
