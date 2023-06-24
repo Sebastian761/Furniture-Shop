@@ -42,6 +42,9 @@
 }
 
 .card__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     background-color: crimson;
 
     padding: 30px;
