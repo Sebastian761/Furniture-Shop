@@ -11,7 +11,7 @@ export const Login = () => {
         password: '',
     })
 
-    const { login } = useAuth()
+    const { login, loginWithGoogle } = useAuth()
     const navigate = useNavigate()
     const [errorcito, setErrorcito] = useState()
 
@@ -32,6 +32,16 @@ export const Login = () => {
                 } else if (error.code === "auth/user-not-found") {
                     toast.error("User not found")
                 }
+            }
+        }
+
+        const handleGoogleSignIn = async () => {
+            try {
+                await loginWithGoogle()
+                toast.success("Login with Google successfully")
+                navigate('/home')
+            } catch (error) {
+                toast.error(error)
             }
         }
 
@@ -69,7 +79,7 @@ export const Login = () => {
                         </div>
                     </div>
                     <div className='flex justify-between items-center'>
-                        <GoogleButton>Login with Google</GoogleButton>
+                        <GoogleButton onClick={handleGoogleSignIn}>Login with Google</GoogleButton>
                         <div className="text-sm text-gray-500 "> <p className='inline px-2nnnnn'>No account?</p> 
                             <Link to={'/register'} className="underline inline" href="">Sign up</Link>
                         </div>
