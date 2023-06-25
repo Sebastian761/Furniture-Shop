@@ -20,7 +20,6 @@ export const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        setErrorcito(' ')
         try {
             await login(user.email, user.password)
             navigate("/home")
