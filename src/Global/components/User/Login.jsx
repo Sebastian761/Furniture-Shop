@@ -11,9 +11,8 @@ export const Login = () => {
         password: '',
     })
 
-    const { login, loginWithGoogle } = useAuth()
+    const { login, loginWithGoogle, resetPassword } = useAuth()
     const navigate = useNavigate()
-    const [errorcito, setErrorcito] = useState()
 
     const handleChange = ({ target: { name, value} })=> {
         setUser({...user, [name]: value})
@@ -34,6 +33,7 @@ export const Login = () => {
                 }
             }
         }
+        
 
         const handleGoogleSignIn = async () => {
             try {
@@ -42,6 +42,18 @@ export const Login = () => {
                 navigate('/home')
             } catch (error) {
                 toast.error(error)
+            }
+        }
+
+        const handleResetPassword = async () => {
+            if (!user.email) return toast.error("Please enter your email")
+            try {
+                await resetPassword(user.email)
+                toast.message("Email sent", {
+                    description: 'Check your email to change your password'
+                })
+            } catch (error) {
+                toast.error('Internal error')
             }
         }
 
@@ -83,6 +95,9 @@ export const Login = () => {
                         <div className="text-sm text-gray-500 "> <p className='inline px-2'>No account?</p> 
                             <Link to={'/register'} className="underline inline" href="">Sign up</Link>
                         </div>
+                    </div>
+                    <div className='text-sm text-gray-500 underline font-bold'>
+                        <a onClick={handleResetPassword}>Forgot Password?</a>
                     </div>
                     <div className="flex items-center justify-between">
                         <Toaster position="bottom-right" richColors/>

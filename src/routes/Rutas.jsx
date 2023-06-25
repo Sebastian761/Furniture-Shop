@@ -20,7 +20,6 @@ export const Rutas = () => {
             <Route path="/login" element={ <Login/> } />
             <Route path="/user-info" element={ <UserInfo /> } />
             <Route path="/logout" element={ <Logout/> } />
-            <Route path="/myAccount" element={ <MyAccount/> } />
             <Route path="/cart" element={ <CartContent /> } />
             <Route path="/register" element={ <Register/> } />
             
