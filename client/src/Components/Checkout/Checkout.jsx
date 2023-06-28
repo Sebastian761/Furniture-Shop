@@ -2,7 +2,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from 'react-router-dom';
 import { dataContext } from "../Context/DataContext";
-import { initMercadoPago, Wallet } from "@mecadopago/sdk-react"
+import { initMercadoPago, Wallet } from "@mercadopago/sdk-react"
 import axios from "axios"
 
 export const Checkout = () =>{
@@ -20,11 +20,11 @@ export const Checkout = () =>{
     const IVA = Math.round(total * 0.18) 
     const shipping = Math.round(total * 0.10)
 
-    initMercadoPago("")
+    initMercadoPago("TEST-19fab056-dc42-40e2-98fb-9ea6d503e96e")
 
     const createPreference = async () => {
         try {
-            const respones = await axios.post("http//localhost:8080/create_preference", {
+            const response = await axios.post("http//localhost:8080/create_preference", {
                 description: "Order from Furniture Shop",
                 price:  (total + IVA + shipping),
             })
@@ -38,6 +38,7 @@ export const Checkout = () =>{
 
     const handleCheckout = async () => {
         const id = await createPreference()
+        console.log(id);
         if (id) {
             setPreferenceId(id)
         }
