@@ -6,27 +6,21 @@ import { initMercadoPago, Wallet } from "@mercadopago/sdk-react"
 import axios from "axios"
 
 export const Checkout = () =>{
-    const [dropdown1, setDropdown1] = useState(false);
-    const [changeText1, setChangeText1] = useState("Province");
     const [preferenceId, setPreferenceId] = useState(null)
 
-    const HandleText1 = (e) => {
-        setChangeText1(e);
-        setDropdown1(false);
-    };
+    initMercadoPago("TEST-19fab056-dc42-40e2-98fb-9ea6d503e96e")
 
     const {cart} = useContext(dataContext)
     const total = cart.reduce((acc, item)=>acc + item.price * item.quanty , 0)
     const IVA = Math.round(total * 0.18) 
     const shipping = Math.round(total * 0.10)
 
-    initMercadoPago("TEST-19fab056-dc42-40e2-98fb-9ea6d503e96e")
-
     const createPreference = async () => {
         try {
-            const response = await axios.post("http//localhost:8080/create_preference", {
+            const response = await axios.post("http://localhost:8080/create_preference", {
                 description: "Order from Furniture Shop",
                 price:  (total + IVA + shipping),
+                quantity: 1
             })
 
             const { id } = response.data
@@ -38,11 +32,22 @@ export const Checkout = () =>{
 
     const handleCheckout = async () => {
         const id = await createPreference()
-        console.log(id);
         if (id) {
+            console.log(id);
             setPreferenceId(id)
-        }
+            console.log(preferenceId);
+        }     
     }
+
+    
+    const [dropdown1, setDropdown1] = useState(false);
+    const [changeText1, setChangeText1] = useState("Province");
+
+    const HandleText1 = (e) => {
+        setChangeText1(e);
+        setDropdown1(false);
+    };
+
 
     return (
         <div className="overflow-y-hidden">
@@ -88,7 +93,9 @@ export const Checkout = () =>{
                             <input className="focus:outline-none focus:ring-2 focus:ring-gray-500 px-2 border-b border-gray-400 leading-4 text-base placeholder-gray-600 py-4   w-full" type="text" placeholder="Phone Number" />
                         </div>
                         <button onClick={handleCheckout} className="focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 mt-8 text-base font-medium focus:ring-2 focus:ring-ocus:ring-gray-800 leading-4 hover:bg-black py-4 w-full md:w-4/12 lg:w-full text-white bg-gray-800">Proceed to payment</button>
-                        {preferenceId && <Wallet initalization={{ preferenceId }} />}
+                        <div id="wallet_container">
+                        { preferenceId && <Wallet initalization={{ preferenceId: preferenceId }} />}
+                        </div>
                         <div className="mt-4 flex justify-start items-center w-full">
                             <Link to={'/cart'}>
                                 <button className="text-base leading-4 underline focus:outline-none focus:text-gray-500  hover:text-gray-800 text-gray-600">Back to my cart</button>
