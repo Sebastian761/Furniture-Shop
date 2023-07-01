@@ -1,10 +1,12 @@
 const express = require("express");
+
 const app = express();
 const cors = require("cors");
 const mercadopago = require("mercadopago");
 
 app.use(express.json());
 app.use(cors())
+
 
 mercadopago.configure({
     access_token: "TEST-154037000266278-062817-55ff18121d7ca5dd4b0cec0d30957ce7-1311777678"
@@ -14,12 +16,13 @@ app.get("/", function (req, res) {
     res.send("funcionando")
 } )
 
-app.post("create_preference", (req, res) => {
+app.post("/create_preference", (req, res) => {
     let preference = {
         items: [
             {
                 title: req.body.description,
                 unit_price: Number(req.body.price),
+                quantity: Number(req.body.quantity)
             }
         ],
         back_urls: {
@@ -36,9 +39,10 @@ app.post("create_preference", (req, res) => {
             res.json({
                 id: response.body.id,
             });
-        }) .catch(function (error) {
+        })
+        .catch(function (error) {
             console.log(error);
-        });
+    });
 });
 
 app.listen(8080, ()=> {
