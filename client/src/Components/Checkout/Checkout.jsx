@@ -6,7 +6,6 @@ import { initMercadoPago, Wallet } from "@mercadopago/sdk-react"
 import axios from "axios"
 
 export const Checkout = () =>{
-    const [preferenceId, setPreferenceId] = useState(null)
 
     initMercadoPago("TEST-19fab056-dc42-40e2-98fb-9ea6d503e96e")
 
@@ -30,13 +29,14 @@ export const Checkout = () =>{
         }
     }
 
+    const [preferenceId, setPreferenceId] = useState(null)
+
     const handleCheckout = async () => {
         const id = await createPreference()
         if (id) {
-            console.log(id);
             setPreferenceId(id)
-            console.log(preferenceId);
-        }     
+        }
+        console.log(id);
     }
 
     
@@ -47,7 +47,6 @@ export const Checkout = () =>{
         setChangeText1(e);
         setDropdown1(false);
     };
-
 
     return (
         <div className="overflow-y-hidden">
@@ -75,7 +74,7 @@ export const Checkout = () =>{
                                     <div className={`shadow absolute z-10 bg-white top-10  w-full mt-3 ${dropdown1 ? "" : "hidden"}`}>
                                         <div className="flex flex-col  w-full overflow-auto h-[15vh]">
                                             <p tabIndex={0} onClick={() => HandleText1("Buenos Aires")} className="focus:outline-none cursor-pointer px-3 hover:text-white hover:bg-gray-800 focus:bg-gray-800 focus:text-white text-left  text-base text-gray-600 py-2 w-full">Buenos Aires</p>
-                                            <p tabIndex={0} onClick={() => HandleText1("Buenos Aiires")} className="focus:outline-none cursor-pointer px-3 hover:text-white hover:bg-gray-800 focus:bg-gray-800 focus:text-white text-left  text-base text-gray-600 py-2 w-full">Misiones</p>
+                                            <p tabIndex={0} onClick={() => HandleText1("Misiones")} className="focus:outline-none cursor-pointer px-3 hover:text-white hover:bg-gray-800 focus:bg-gray-800 focus:text-white text-left  text-base text-gray-600 py-2 w-full">Misiones</p>
                                             <p tabIndex={0} onClick={() => HandleText1("Santa Fé")} className="focus:outline-none cursor-pointer px-3 hover:text-white hover:bg-gray-800 focus:bg-gray-800 focus:text-white text-left  text-base text-gray-600 py-2 w-full">Santa Fé</p>
                                             <p tabIndex={0} onClick={() => HandleText1("Entre Rios")} className="focus:outline-none cursor-pointer px-3 hover:text-white hover:bg-gray-800 focus:bg-gray-800 focus:text-white text-left  text-base text-gray-600 py-2 w-full">Entre Rios</p>
                                             <p tabIndex={0} onClick={() => HandleText1("Mendoza")} className="focus:outline-none cursor-pointer px-3 hover:text-white hover:bg-gray-800 focus:bg-gray-800 focus:text-white text-left  text-base text-gray-600 py-2 w-full">Mendoza</p>
@@ -93,9 +92,8 @@ export const Checkout = () =>{
                             <input className="focus:outline-none focus:ring-2 focus:ring-gray-500 px-2 border-b border-gray-400 leading-4 text-base placeholder-gray-600 py-4   w-full" type="text" placeholder="Phone Number" />
                         </div>
                         <button onClick={handleCheckout} className="focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 mt-8 text-base font-medium focus:ring-2 focus:ring-ocus:ring-gray-800 leading-4 hover:bg-black py-4 w-full md:w-4/12 lg:w-full text-white bg-gray-800">Proceed to payment</button>
-                        <div id="wallet_container">
-                        { preferenceId && <Wallet initalization={{ preferenceId: preferenceId }} />}
-                        </div>
+                        { preferenceId && <Wallet initialization={{ preferenceId: preferenceId }} />}
+                        <p>{preferenceId}</p>
                         <div className="mt-4 flex justify-start items-center w-full">
                             <Link to={'/cart'}>
                                 <button className="text-base leading-4 underline focus:outline-none focus:text-gray-500  hover:text-gray-800 text-gray-600">Back to my cart</button>
